@@ -1,13 +1,26 @@
-function log() {
-	try {
-		console.log.apply(console, arguments);
-	}
-	catch(e) {
+(function() {
+
+	var testObject;
+
+	function log() {
 		try {
-			opera.postError.apply(opera, arguments);
+			console.log.apply(console, arguments);
 		}
 		catch(e) {
-			alert(Array.prototype.join.call(arguments, " "));
+			try {
+				opera.postError.apply(opera, arguments);
+			}
+			catch(e) {
+				alert(Array.prototype.join.call(arguments, " "));
+			}
 		}
 	}
-}
+
+	testObject = {
+		name: 'Awesome...',
+		age: '23'
+	};
+
+	log(testObject);
+
+})();
