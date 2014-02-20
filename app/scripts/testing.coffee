@@ -1,12 +1,12 @@
 (->
   log = ->
     try
-      console.log.apply console, arguments_
+      console.log.apply console, arguments
     catch e
       try
-        opera.postError.apply opera, arguments_
+        opera.postError.apply opera, arguments
       catch e
-        alert Array::join.call(arguments_, " ")
+        alert Array::join.call(arguments, " ")
     return
   testObject = undefined
   testObject =
@@ -18,7 +18,7 @@
     runTest = ->
       if not paused and queue.length
         queue.shift()()
-        resume()  unless paused
+        resume() unless paused
       return
     queue = []
     paused = false
