@@ -10,10 +10,10 @@
     return
   testObject = undefined
   testObject =
-    name: "Awesome..."
+    name: "Poplinr..."
     age: "23"
-
   log testObject
+  # test(), pause(), resume()...
   (->
     runTest = ->
       if not paused and queue.length
@@ -52,15 +52,33 @@
 
     return
   )()
+  # Tests...
   window.onload = ->
-    test "Async Test #1...", ->
+  
+    test "Async Test...", ->
       pause()
       setTimeout (->
-        assert true, "First test..."
+        assert true, "Passing Test..."
+        resume()
         return
       ), 1000
       return
 
+    test "Another Async Test...", ->
+      pause()
+      setTimeout (->
+        assert false, "Failing Test..."
+        resume()
+        return
+      ), 1000
+      return 
+
+    test "A Sync Test...", ->
+      pause()
+      assert true, "Passing Test..."
+      resume()
+      return
+    
     return
 
   return

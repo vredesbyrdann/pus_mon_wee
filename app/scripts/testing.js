@@ -18,7 +18,7 @@
     };
     testObject = void 0;
     testObject = {
-      name: "Awesome...",
+      name: "Poplinr...",
       age: "23"
     };
     log(testObject);
@@ -63,11 +63,24 @@
       };
     })();
     window.onload = function() {
-      test("Async Test #1...", function() {
+      test("Async Test...", function() {
         pause();
         setTimeout((function() {
-          assert(true, "First test...");
+          assert(true, "Passing Test...");
+          resume();
         }), 1000);
+      });
+      test("Another Async Test...", function() {
+        pause();
+        setTimeout((function() {
+          assert(false, "Failing Test...");
+          resume();
+        }), 1000);
+      });
+      test("A Sync Test...", function() {
+        pause();
+        assert(true, "Passing Test...");
+        resume();
       });
     };
   })();
